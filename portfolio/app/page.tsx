@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import { FloatingNav } from "@/components/ui/FloatingNav";
 import { ModeToggle } from "@/components/ui/Modetoggle";
+import Gridui from "@/components/Grid";
 import { FaHome } from "react-icons/fa";
 
 export default function Home() {
@@ -14,6 +15,7 @@ export default function Home() {
           navItems={[{ name: "Home", link: "/", icon: <FaHome /> }]}
         />
         <Hero />
+        <Gridui />
       </div>
     </main>
   );
