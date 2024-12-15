@@ -7,6 +7,17 @@ const {
   default: flattenColorPalette,
 } = require("tailwindcss/lib/util/flattenColorPalette");
 
+function addVariablesForColors({ addBase, theme }: any) {
+  let allColors = flattenColorPalette(theme("colors"));
+  let newVars = Object.fromEntries(
+    Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
+  );
+
+  addBase({
+    ":root": newVars,
+  });
+}
+
 export default {
   darkMode: ["class"],
   content: [
@@ -153,6 +164,8 @@ export default {
         { values: flattenColorPalette(theme("backgroundColor")), type: "color" }
       );
     },
+
+    addVariablesForColors,
     require("tailwindcss-animate"),
   ],
 } satisfies Config;
